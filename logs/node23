@@ -1,0 +1,13 @@
+2022-07-09 23:19:58.319 +07 [3402] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
+2022-07-09 23:19:58.319 +07 [3402] LOG:  listening on IPv6 address "::1", port 5423
+2022-07-09 23:19:58.319 +07 [3402] LOG:  listening on IPv4 address "127.0.0.1", port 5423
+2022-07-09 23:19:58.357 +07 [3402] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5423"
+2022-07-09 23:19:58.433 +07 [3403] LOG:  database system was shut down at 2022-07-09 23:19:48 +07
+2022-07-09 23:19:58.531 +07 [3402] LOG:  database system is ready to accept connections
+2022-07-09 23:25:20.808 +07 [3402] LOG:  received fast shutdown request
+2022-07-09 23:25:20.809 +07 [3402] LOG:  aborting any active transactions
+2022-07-09 23:25:20.810 +07 [3410] FATAL:  terminating connection due to administrator command
+2022-07-09 23:25:20.810 +07 [3402] LOG:  background worker "logical replication launcher" (PID 3411) exited with exit code 1
+2022-07-09 23:25:20.810 +07 [3402] LOG:  background worker "mtm-dmq-sender" (PID 3410) exited with exit code 1
+2022-07-09 23:25:20.810 +07 [3404] LOG:  shutting down
+2022-07-09 23:25:20.823 +07 [3402] LOG:  database system is shut down

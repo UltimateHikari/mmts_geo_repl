@@ -1,0 +1,8 @@
+CREATE EXTENSION multimaster;
+SELECT mtm.init_cluster('dbname=mydb user=mtmuser host=localhost port=5411',
+'{"dbname=mydb user=mtmuser host=localhost port=5412", "dbname=mydb user=mtmuser host=localhost port=5413"}');
+
+SELECT mtm.init_cluster('postgresql://mtmuser:mtmuserpassword@localhost:5411/mydb',
+'{"postgresql://mtmuser:mtmuserpassword@localhost:5412/mydb", "postgresql://mtmuser:mtmuserpassword@localhost:5413/mydb"}');
+
+# second is preferrable because of password
