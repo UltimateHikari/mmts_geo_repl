@@ -1,13 +1,13 @@
-2022-07-09 23:19:57.879 +07 [3390] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
-2022-07-09 23:19:57.880 +07 [3390] LOG:  listening on IPv6 address "::1", port 5422
-2022-07-09 23:19:57.880 +07 [3390] LOG:  listening on IPv4 address "127.0.0.1", port 5422
-2022-07-09 23:19:57.932 +07 [3390] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5422"
-2022-07-09 23:19:58.021 +07 [3391] LOG:  database system was shut down at 2022-07-09 23:19:48 +07
-2022-07-09 23:19:58.117 +07 [3390] LOG:  database system is ready to accept connections
-2022-07-09 23:25:20.707 +07 [3390] LOG:  received fast shutdown request
-2022-07-09 23:25:20.708 +07 [3390] LOG:  aborting any active transactions
-2022-07-09 23:25:20.708 +07 [3398] FATAL:  terminating connection due to administrator command
-2022-07-09 23:25:20.709 +07 [3390] LOG:  background worker "mtm-dmq-sender" (PID 3398) exited with exit code 1
-2022-07-09 23:25:20.709 +07 [3390] LOG:  background worker "logical replication launcher" (PID 3399) exited with exit code 1
-2022-07-09 23:25:20.709 +07 [3392] LOG:  shutting down
-2022-07-09 23:25:20.721 +07 [3390] LOG:  database system is shut down
+2022-07-10 12:52:30.256 +07 [9048] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
+2022-07-10 12:52:30.257 +07 [9048] LOG:  listening on IPv6 address "::1", port 5422
+2022-07-10 12:52:30.257 +07 [9048] LOG:  listening on IPv4 address "127.0.0.1", port 5422
+2022-07-10 12:52:30.258 +07 [9048] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5422"
+2022-07-10 12:52:30.260 +07 [9049] LOG:  database system was shut down at 2022-07-10 12:52:16 +07
+2022-07-10 12:52:30.264 +07 [9048] LOG:  database system is ready to accept connections
+2022-07-10 13:13:08.072 +07 [9048] LOG:  received fast shutdown request
+2022-07-10 13:13:08.073 +07 [9048] LOG:  aborting any active transactions
+2022-07-10 13:13:08.073 +07 [9056] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:08.074 +07 [9048] LOG:  background worker "logical replication launcher" (PID 9057) exited with exit code 1
+2022-07-10 13:13:08.074 +07 [9048] LOG:  background worker "mtm-dmq-sender" (PID 9056) exited with exit code 1
+2022-07-10 13:13:08.074 +07 [9050] LOG:  shutting down
+2022-07-10 13:13:08.087 +07 [9048] LOG:  database system is shut down

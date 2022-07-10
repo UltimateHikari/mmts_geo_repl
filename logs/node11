@@ -1,206 +1,133 @@
-2022-07-09 23:19:57.061 +07 [3342] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
-2022-07-09 23:19:57.062 +07 [3342] LOG:  listening on IPv6 address "::1", port 5411
-2022-07-09 23:19:57.062 +07 [3342] LOG:  listening on IPv4 address "127.0.0.1", port 5411
-2022-07-09 23:19:57.083 +07 [3342] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5411"
-2022-07-09 23:19:57.125 +07 [3343] LOG:  database system was shut down at 2022-07-09 23:19:45 +07
-2022-07-09 23:19:57.179 +07 [3342] LOG:  database system is ready to accept connections
-2022-07-09 23:25:07.664 +07 [3550] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:07.688 +07 [3553] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:07.691 +07 [3452] LOG:  [MTM] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
-2022-07-09 23:25:07.694 +07 [3452] LOG:  [MTM] mtm_after_node_create 2
-2022-07-09 23:25:07.694 +07 [3452] LOG:  [MTM] mtm_after_node_create 3
-2022-07-09 23:25:07.695 +07 [3452] LOG:  [MTM] mtm_after_node_create 1
-2022-07-09 23:25:07.695 +07 [3555] LOG:  [MTM] [mtm-monitor] monitor started
-2022-07-09 23:25:07.700 +07 [3555] LOG:  [MTM] [mtm-monitor] loaded state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
-2022-07-09 23:25:07.705 +07 [3555] LOG:  [MTM] [mtm-monitor] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
-2022-07-09 23:25:07.705 +07 [3555] LOG:  [MTM] [mtm-monitor] sending non-tx do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_1_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$;  DDL: non-concurrent
-2022-07-09 23:25:07.712 +07 [3560] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:07.729 +07 [3555] LOG:  logical decoding found consistent point at 0/15DA5D8
-2022-07-09 23:25:07.729 +07 [3555] DETAIL:  There are no running transactions.
-2022-07-09 23:25:07.733 +07 [3555] LOG:  [MTM] [mtm-monitor] started workers for node 2
-2022-07-09 23:25:07.740 +07 [3564] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:07.756 +07 [3555] LOG:  logical decoding found consistent point at 0/15DA728
-2022-07-09 23:25:07.756 +07 [3555] DETAIL:  There are no running transactions.
-2022-07-09 23:25:07.759 +07 [3555] LOG:  [MTM] [mtm-monitor] started workers for node 3
-2022-07-09 23:25:07.759 +07 [3555] LOG:  [MTM] [mtm-monitor] mtm-resolver is dead, restarting it
-2022-07-09 23:25:07.759 +07 [3555] LOG:  [MTM] [mtm-monitor] mtm-campaigner is dead, restarting it
-2022-07-09 23:25:07.759 +07 [3555] LOG:  [MTM] [mtm-monitor] mtm-replier is dead, restarting it
-2022-07-09 23:25:07.759 +07 [3572] LOG:  [MTM] [mtm-replier] replier started
-2022-07-09 23:25:07.760 +07 [3573] LOG:  [MTM] [mtm-campaigner] campaigner started
-2022-07-09 23:25:07.761 +07 [3574] LOG:  [MTM] [mtm-resolver] resolver started
-2022-07-09 23:25:07.770 +07 [3561] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 started.
-2022-07-09 23:25:07.770 +07 [3561] LOG:  [MTM] [mtm-logrep-receiver-1-2] registered as running in normal mode
-2022-07-09 23:25:07.770 +07 [3561] ERROR:  receiver mtm-logrep-receiver-1-2 exits as dmq connection to node 2 is not yet established
-2022-07-09 23:25:07.788 +07 [3561] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 is exiting
-2022-07-09 23:25:07.789 +07 [3342] LOG:  background worker "mtm-logrep-receiver-1-2" (PID 3561) exited with exit code 1
-2022-07-09 23:25:07.811 +07 [3566] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 started.
-2022-07-09 23:25:07.811 +07 [3566] LOG:  [MTM] [mtm-logrep-receiver-1-3] registered as running in normal mode
-2022-07-09 23:25:07.811 +07 [3566] ERROR:  receiver mtm-logrep-receiver-1-3 exits as dmq connection to node 3 is not yet established
-2022-07-09 23:25:07.828 +07 [3566] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 is exiting
-2022-07-09 23:25:07.829 +07 [3342] LOG:  background worker "mtm-logrep-receiver-1-3" (PID 3566) exited with exit code 1
-2022-07-09 23:25:07.890 +07 [3575] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:07.943 +07 [3577] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.092 +07 [3581] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.145 +07 [3583] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.295 +07 [3587] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.347 +07 [3589] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.497 +07 [3593] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.549 +07 [3595] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.700 +07 [3599] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.751 +07 [3601] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.903 +07 [3605] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:08.953 +07 [3607] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.106 +07 [3611] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.155 +07 [3613] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.308 +07 [3617] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.357 +07 [3619] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.510 +07 [3623] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.559 +07 [3625] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.712 +07 [3629] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.761 +07 [3631] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.915 +07 [3635] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:09.963 +07 [3637] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.117 +07 [3641] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.165 +07 [3643] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.319 +07 [3647] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.367 +07 [3649] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.521 +07 [3653] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.569 +07 [3655] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.723 +07 [3659] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.772 +07 [3661] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.925 +07 [3665] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:10.974 +07 [3667] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.127 +07 [3671] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.176 +07 [3673] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.330 +07 [3677] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.378 +07 [3679] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.532 +07 [3683] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.580 +07 [3685] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.735 +07 [3689] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.782 +07 [3691] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.937 +07 [3695] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:11.984 +07 [3697] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.139 +07 [3701] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.186 +07 [3703] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.341 +07 [3707] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.388 +07 [3709] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.543 +07 [3713] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.591 +07 [3715] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.716 +07 [3555] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-1-2 is dead, restarting it
-2022-07-09 23:25:12.742 +07 [3555] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-1-3 is dead, restarting it
-2022-07-09 23:25:12.745 +07 [3725] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.774 +07 [3722] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 started.
-2022-07-09 23:25:12.774 +07 [3722] LOG:  [MTM] [mtm-logrep-receiver-1-2] registered as running in normal mode
-2022-07-09 23:25:12.774 +07 [3722] ERROR:  receiver mtm-logrep-receiver-1-2 exits as dmq connection to node 2 is not yet established
-2022-07-09 23:25:12.793 +07 [3727] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.795 +07 [3722] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 is exiting
-2022-07-09 23:25:12.796 +07 [3342] LOG:  background worker "mtm-logrep-receiver-1-2" (PID 3722) exited with exit code 1
-2022-07-09 23:25:12.803 +07 [3724] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 started.
-2022-07-09 23:25:12.803 +07 [3724] LOG:  [MTM] [mtm-logrep-receiver-1-3] registered as running in normal mode
-2022-07-09 23:25:12.803 +07 [3724] ERROR:  receiver mtm-logrep-receiver-1-3 exits as dmq connection to node 3 is not yet established
-2022-07-09 23:25:12.820 +07 [3724] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 is exiting
-2022-07-09 23:25:12.821 +07 [3342] LOG:  background worker "mtm-logrep-receiver-1-3" (PID 3724) exited with exit code 1
-2022-07-09 23:25:12.947 +07 [3731] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:12.995 +07 [3733] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.149 +07 [3737] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.197 +07 [3740] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.351 +07 [3743] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.399 +07 [3745] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.553 +07 [3749] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.601 +07 [3751] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.755 +07 [3755] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.803 +07 [3757] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:13.958 +07 [3761] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.005 +07 [3764] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.160 +07 [3767] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.206 +07 [3770] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.362 +07 [3773] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.409 +07 [3776] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.564 +07 [3779] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.611 +07 [3782] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.768 +07 [3785] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.813 +07 [3788] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:14.971 +07 [3791] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.015 +07 [3794] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.173 +07 [3797] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.216 +07 [3800] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.375 +07 [3803] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.419 +07 [3806] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.578 +07 [3809] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.621 +07 [3812] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.780 +07 [3815] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.823 +07 [3817] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:15.983 +07 [3821] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.024 +07 [3823] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.186 +07 [3827] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.226 +07 [3830] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.388 +07 [3833] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.428 +07 [3835] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.590 +07 [3839] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.631 +07 [3841] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.792 +07 [3845] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.833 +07 [3848] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:16.994 +07 [3851] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.035 +07 [3854] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.197 +07 [3857] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.237 +07 [3859] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.399 +07 [3863] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.439 +07 [3865] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.601 +07 [3869] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.641 +07 [3871] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.717 +07 [3555] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-1-2 is dead, restarting it
-2022-07-09 23:25:17.742 +07 [3555] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-1-3 is dead, restarting it
-2022-07-09 23:25:17.766 +07 [3878] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 started.
-2022-07-09 23:25:17.766 +07 [3878] LOG:  [MTM] [mtm-logrep-receiver-1-2] registered as running in normal mode
-2022-07-09 23:25:17.766 +07 [3878] ERROR:  receiver mtm-logrep-receiver-1-2 exits as dmq connection to node 2 is not yet established
-2022-07-09 23:25:17.784 +07 [3878] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 is exiting
-2022-07-09 23:25:17.785 +07 [3342] LOG:  background worker "mtm-logrep-receiver-1-2" (PID 3878) exited with exit code 1
-2022-07-09 23:25:17.803 +07 [3881] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:17.811 +07 [3880] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 started.
-2022-07-09 23:25:17.811 +07 [3880] LOG:  [MTM] [mtm-logrep-receiver-1-3] registered as running in normal mode
-2022-07-09 23:25:17.811 +07 [3880] ERROR:  receiver mtm-logrep-receiver-1-3 exits as dmq connection to node 3 is not yet established
-2022-07-09 23:25:17.828 +07 [3880] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 is exiting
-2022-07-09 23:25:17.828 +07 [3342] LOG:  background worker "mtm-logrep-receiver-1-3" (PID 3880) exited with exit code 1
-2022-07-09 23:25:17.843 +07 [3884] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.005 +07 [3887] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.044 +07 [3890] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.207 +07 [3893] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.246 +07 [3896] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.409 +07 [3899] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.448 +07 [3901] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.611 +07 [3905] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.650 +07 [3907] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.813 +07 [3911] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:18.852 +07 [3913] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.015 +07 [3917] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.054 +07 [3920] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.217 +07 [3923] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.256 +07 [3925] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.419 +07 [3929] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.458 +07 [3931] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.621 +07 [3935] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.660 +07 [3938] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.823 +07 [3941] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:19.863 +07 [3944] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:20.025 +07 [3947] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:20.065 +07 [3950] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:20.227 +07 [3953] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:20.267 +07 [3956] FATAL:  database "mydb application_name=mtm_broadcast" does not exist
-2022-07-09 23:25:20.302 +07 [3342] LOG:  received fast shutdown request
-2022-07-09 23:25:20.304 +07 [3342] LOG:  aborting any active transactions
-2022-07-09 23:25:20.304 +07 [3555] FATAL:  terminating connection due to administrator command
-2022-07-09 23:25:20.304 +07 [3452] FATAL:  terminating connection due to administrator command
-2022-07-09 23:25:20.304 +07 [3574] FATAL:  terminating connection due to administrator command
-2022-07-09 23:25:20.304 +07 [3555] LOG:  [MTM] [mtm-monitor] monitor exiting
-2022-07-09 23:25:20.304 +07 [3573] FATAL:  terminating connection due to administrator command
-2022-07-09 23:25:20.304 +07 [3572] FATAL:  terminating connection due to administrator command
-2022-07-09 23:25:20.304 +07 [3350] FATAL:  terminating connection due to administrator command
-2022-07-09 23:25:20.304 +07 [3572] LOG:  [MTM] [mtm-replier] replier exiting
-2022-07-09 23:25:20.304 +07 [3342] LOG:  background worker "logical replication launcher" (PID 3351) exited with exit code 1
-2022-07-09 23:25:20.304 +07 [3342] LOG:  background worker "mtm-dmq-sender" (PID 3350) exited with exit code 1
-2022-07-09 23:25:20.305 +07 [3342] LOG:  background worker "mtm-resolver" (PID 3574) exited with exit code 1
-2022-07-09 23:25:20.305 +07 [3342] LOG:  background worker "mtm-campaigner" (PID 3573) exited with exit code 1
-2022-07-09 23:25:20.305 +07 [3342] LOG:  background worker "mtm-replier" (PID 3572) exited with exit code 1
-2022-07-09 23:25:20.305 +07 [3342] LOG:  background worker "mtm-monitor" (PID 3555) exited with exit code 1
-2022-07-09 23:25:20.315 +07 [3344] LOG:  shutting down
-2022-07-09 23:25:20.329 +07 [3342] LOG:  database system is shut down
+2022-07-10 12:52:29.663 +07 [8999] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
+2022-07-10 12:52:29.664 +07 [8999] LOG:  listening on IPv6 address "::1", port 5411
+2022-07-10 12:52:29.664 +07 [8999] LOG:  listening on IPv4 address "127.0.0.1", port 5411
+2022-07-10 12:52:29.778 +07 [8999] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5411"
+2022-07-10 12:52:29.863 +07 [9001] LOG:  database system was shut down at 2022-07-10 12:52:13 +07
+2022-07-10 12:52:29.869 +07 [8999] LOG:  database system is ready to accept connections
+2022-07-10 12:53:54.636 +07 [9113] FATAL:  [MTM] multimaster is not configured
+2022-07-10 12:53:54.636 +07 [9113] LOG:  [MTM] [STATE] dmq receiver from node 2 disconnected
+2022-07-10 12:53:54.662 +07 [9090] LOG:  [MTM] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
+2022-07-10 12:53:54.665 +07 [9090] LOG:  [MTM] mtm_after_node_create 2
+2022-07-10 12:53:54.665 +07 [9090] LOG:  [MTM] mtm_after_node_create 3
+2022-07-10 12:53:54.666 +07 [9090] LOG:  [MTM] mtm_after_node_create 1
+2022-07-10 12:53:54.667 +07 [9117] LOG:  [MTM] [mtm-monitor] monitor started
+2022-07-10 12:53:54.673 +07 [9117] LOG:  [MTM] [mtm-monitor] loaded state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
+2022-07-10 12:53:54.677 +07 [9117] LOG:  [MTM] [mtm-monitor] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
+2022-07-10 12:53:54.677 +07 [9117] LOG:  [MTM] [mtm-monitor] sending non-tx do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_1_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$;  DDL: non-concurrent
+2022-07-10 12:53:54.686 +07 [9122] LOG:  [MTM] [STATE] dmq receiver from node 3 connected
+2022-07-10 12:53:54.686 +07 [9122] FATAL:  [MTM] mtm-replier is not loaded yet
+2022-07-10 12:53:54.686 +07 [9122] LOG:  [MTM] [STATE] dmq receiver from node 3 disconnected
+2022-07-10 12:53:54.693 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node2
+2022-07-10 12:53:54.693 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 2 connected
+2022-07-10 12:53:54.701 +07 [9117] LOG:  logical decoding found consistent point at 0/15DE0D0
+2022-07-10 12:53:54.701 +07 [9117] DETAIL:  There are no running transactions.
+2022-07-10 12:53:54.705 +07 [9117] LOG:  [MTM] [mtm-monitor] started workers for node 2
+2022-07-10 12:53:54.720 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node3
+2022-07-10 12:53:54.720 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 3 connected
+2022-07-10 12:53:54.728 +07 [9117] LOG:  logical decoding found consistent point at 0/15DE220
+2022-07-10 12:53:54.728 +07 [9117] DETAIL:  There are no running transactions.
+2022-07-10 12:53:54.733 +07 [9117] LOG:  [MTM] [mtm-monitor] started workers for node 3
+2022-07-10 12:53:54.733 +07 [9117] LOG:  [MTM] [mtm-monitor] mtm-resolver is dead, restarting it
+2022-07-10 12:53:54.733 +07 [9117] LOG:  [MTM] [mtm-monitor] mtm-campaigner is dead, restarting it
+2022-07-10 12:53:54.733 +07 [9117] LOG:  [MTM] [mtm-monitor] mtm-replier is dead, restarting it
+2022-07-10 12:53:54.734 +07 [9132] LOG:  [MTM] [mtm-replier] replier started
+2022-07-10 12:53:54.734 +07 [9133] LOG:  [MTM] [mtm-campaigner] campaigner started
+2022-07-10 12:53:54.736 +07 [9134] LOG:  [MTM] [mtm-resolver] resolver started
+2022-07-10 12:53:54.762 +07 [9123] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 started.
+2022-07-10 12:53:54.762 +07 [9123] LOG:  [MTM] [mtm-logrep-receiver-1-2] registered as running in normal mode
+2022-07-10 12:53:54.762 +07 [9123] ERROR:  receiver mtm-logrep-receiver-1-2 exits as dmq connection to node 2 is not yet established
+2022-07-10 12:53:54.772 +07 [9127] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 started.
+2022-07-10 12:53:54.772 +07 [9127] LOG:  [MTM] [mtm-logrep-receiver-1-3] registered as running in normal mode
+2022-07-10 12:53:54.772 +07 [9127] ERROR:  receiver mtm-logrep-receiver-1-3 exits as dmq connection to node 3 is not yet established
+2022-07-10 12:53:54.783 +07 [9123] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 is exiting
+2022-07-10 12:53:54.784 +07 [8999] LOG:  background worker "mtm-logrep-receiver-1-2" (PID 9123) exited with exit code 1
+2022-07-10 12:53:54.789 +07 [9127] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 is exiting
+2022-07-10 12:53:54.789 +07 [8999] LOG:  background worker "mtm-logrep-receiver-1-3" (PID 9127) exited with exit code 1
+2022-07-10 12:53:55.071 +07 [9135] LOG:  [MTM] [STATE] dmq receiver from node 2 connected
+2022-07-10 12:53:55.119 +07 [9136] LOG:  [MTM] [STATE] dmq receiver from node 3 connected
+2022-07-10 12:53:55.121 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [DMQ] failed to send message to node3: server closed the connection unexpectedly
+		This probably means the server terminated abnormally
+		before or while processing the request.
+	
+2022-07-10 12:53:55.121 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 3 disconnected
+2022-07-10 12:53:55.355 +07 [9133] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=2, last_vote.members=11
+2022-07-10 12:53:55.355 +07 [9133] LOG:  [MTM] [mtm-campaigner] proposed and voted myself for gen num=2, members=11, configured=111, clique=11
+2022-07-10 12:53:55.356 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node3
+2022-07-10 12:53:55.356 +07 [9008] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 3 connected
+2022-07-10 12:53:55.363 +07 [9133] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=2, last_vote.num=2, last_vote.members=11
+2022-07-10 12:53:55.366 +07 [9133] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=2, last_vote.num=2, last_vote.members=11
+2022-07-10 12:53:55.366 +07 [9133] LOG:  [MTM] [mtm-campaigner] receive mode set to normal
+2022-07-10 12:53:55.366 +07 [9133] LOG:  [MTM] [mtm-campaigner] [STATE] switched to online in generation num=2, members=11, donors=11 as donor, ParallelSafe logged at 0/15DE398
+2022-07-10 12:53:55.366 +07 [9133] LOG:  [MTM] [mtm-campaigner] failed election of gen num=2, members=11, configured=111, nvotes=1, not_polled_candidates=0
+2022-07-10 12:53:55.369 +07 [9133] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=2, last_vote.num=2, last_vote.members=0
+2022-07-10 12:53:56.834 +07 [9141] LOG:  [MTM] [mtm-logrep-sender-1-3] walsender to node 3 starts in recovery mode
+2022-07-10 12:53:56.834 +07 [9141] LOG:  starting logical decoding for slot "mtm_slot_3"
+2022-07-10 12:53:56.834 +07 [9141] DETAIL:  Streaming transactions committing after 0/15DE258, reading WAL from 0/15DE220.
+2022-07-10 12:53:56.834 +07 [9141] LOG:  logical decoding found consistent point at 0/15DE220
+2022-07-10 12:53:56.834 +07 [9141] DETAIL:  There are no running transactions.
+2022-07-10 12:53:59.679 +07 [9144] LOG:  [MTM] [mtm-logrep-sender-1-2] walsender to node 2 starts in normal mode
+2022-07-10 12:53:59.679 +07 [9144] LOG:  starting logical decoding for slot "mtm_slot_2"
+2022-07-10 12:53:59.679 +07 [9144] DETAIL:  Streaming transactions committing after 0/15DE108, reading WAL from 0/15DE0D0.
+2022-07-10 12:53:59.679 +07 [9144] LOG:  logical decoding found consistent point at 0/15DE0D0
+2022-07-10 12:53:59.679 +07 [9144] DETAIL:  There are no running transactions.
+2022-07-10 12:53:59.690 +07 [9117] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-1-2 is dead, restarting it
+2022-07-10 12:53:59.716 +07 [9117] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-1-3 is dead, restarting it
+2022-07-10 12:53:59.731 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 started.
+2022-07-10 12:53:59.731 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] registered as running in normal mode
+2022-07-10 12:53:59.736 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] load_filter_map from 15593A8 node_id=2 current_last_lsn=15DE398
+2022-07-10 12:53:59.736 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] starting receiver: replication_node = 2, mode = normal, remote_start = 0, syncpoint_vector (origin/local) = {2: 0/15593A8, }
+2022-07-10 12:53:59.738 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] syncpoint created, origin_lsn=0/15DE3D0
+2022-07-10 12:53:59.742 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] syncpoint: await for parallel workers to finish
+2022-07-10 12:53:59.748 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] syncpoint processed: node_id=2, origin_lsn=0/15DE358, receiver_lsn=0/15DE418
+2022-07-10 12:53:59.760 +07 [9147] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 started.
+2022-07-10 12:53:59.760 +07 [9147] LOG:  [MTM] [mtm-logrep-receiver-1-3] registered as running in normal mode
+2022-07-10 12:53:59.765 +07 [9147] LOG:  [MTM] [mtm-logrep-receiver-1-3] load_filter_map from 15593A8 node_id=3 current_last_lsn=15DE770
+2022-07-10 12:53:59.765 +07 [9147] LOG:  [MTM] [mtm-logrep-receiver-1-3] starting receiver: replication_node = 3, mode = normal, remote_start = 0, syncpoint_vector (origin/local) = {3: 0/15593A8, }
+2022-07-10 12:53:59.769 +07 [9147] LOG:  [MTM] [mtm-logrep-receiver-1-3] syncpoint: await for parallel workers to finish
+2022-07-10 12:53:59.774 +07 [9147] LOG:  [MTM] [mtm-logrep-receiver-1-3] syncpoint processed: node_id=3, origin_lsn=0/15DE300, receiver_lsn=0/15DE7B8
+2022-07-10 12:54:00.186 +07 [9132] LOG:  [MTM] [mtm-replier] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=2, last_vote.num=3, last_vote.members=111
+2022-07-10 12:54:00.388 +07 [9136] LOG:  [MTM] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=3, last_vote.members=111
+2022-07-10 12:54:00.392 +07 [9136] LOG:  [MTM] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=3, last_vote.members=111
+2022-07-10 12:54:00.392 +07 [9136] LOG:  [MTM] receive mode set to normal
+2022-07-10 12:54:00.392 +07 [9136] LOG:  [MTM] [STATE] switched to online in generation num=3, members=111, donors=11 as donor, ParallelSafe logged at 0/15DEB00
+2022-07-10 12:54:00.411 +07 [9141] LOG:  [MTM] [mtm-logrep-sender-1-3] walsender to node 3 exited
+2022-07-10 12:54:00.456 +07 [9154] LOG:  [MTM] [mtm-logrep-sender-1-3] walsender to node 3 starts in normal mode
+2022-07-10 12:54:00.456 +07 [9154] LOG:  starting logical decoding for slot "mtm_slot_3"
+2022-07-10 12:54:00.456 +07 [9154] DETAIL:  Streaming transactions committing after 0/15DE3D0, reading WAL from 0/15DE308.
+2022-07-10 12:54:00.456 +07 [9154] LOG:  logical decoding found consistent point at 0/15DE308
+2022-07-10 12:54:00.456 +07 [9154] DETAIL:  There are no running transactions.
+2022-07-10 12:57:25.908 +07 [9090] LOG:  [MTM] sending DDL: RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_2'); SET session_authorization TO 'mtmuser'; SET search_path TO "$user", public;  create table example(id integer not null primary key)
+2022-07-10 12:58:12.265 +07 [9090] LOG:  [MTM] sending non-tx RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_2'); DROP SCHEMA IF EXISTS mtm_tmp_1_2_toast CASCADE; DROP SCHEMA IF EXISTS mtm_tmp_1_2 CASCADE; DDL: non-concurrent
+2022-07-10 13:13:07.466 +07 [8999] LOG:  received fast shutdown request
+2022-07-10 13:13:07.468 +07 [8999] LOG:  aborting any active transactions
+2022-07-10 13:13:07.468 +07 [9147] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.468 +07 [9134] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.468 +07 [9145] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.468 +07 [9135] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.468 +07 [9135] STATEMENT:  select mtm.dmq_receiver_loop('node2', 2000)
+2022-07-10 13:13:07.468 +07 [9133] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.468 +07 [9136] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.468 +07 [9136] STATEMENT:  select mtm.dmq_receiver_loop('node3', 2000)
+2022-07-10 13:13:07.468 +07 [9132] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.468 +07 [9132] LOG:  [MTM] [mtm-replier] replier exiting
+2022-07-10 13:13:07.468 +07 [9136] LOG:  [MTM] [STATE] dmq receiver from node 3 disconnected
+2022-07-10 13:13:07.468 +07 [9135] LOG:  [MTM] [STATE] dmq receiver from node 2 disconnected
+2022-07-10 13:13:07.468 +07 [9008] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.469 +07 [8999] LOG:  background worker "mtm-replier" (PID 9132) exited with exit code 1
+2022-07-10 13:13:07.469 +07 [9117] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.469 +07 [9117] LOG:  [MTM] [mtm-monitor] monitor exiting
+2022-07-10 13:13:07.469 +07 [8999] LOG:  background worker "mtm-campaigner" (PID 9133) exited with exit code 1
+2022-07-10 13:13:07.469 +07 [9144] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.469 +07 [9144] LOG:  [MTM] [mtm-logrep-sender-1-2] walsender to node 2 exited
+2022-07-10 13:13:07.469 +07 [9154] FATAL:  terminating connection due to administrator command
+2022-07-10 13:13:07.469 +07 [8999] LOG:  background worker "mtm-dmq-sender" (PID 9008) exited with exit code 1
+2022-07-10 13:13:07.469 +07 [8999] LOG:  background worker "logical replication launcher" (PID 9009) exited with exit code 1
+2022-07-10 13:13:07.469 +07 [9154] LOG:  [MTM] [mtm-logrep-sender-1-3] walsender to node 3 exited
+2022-07-10 13:13:07.469 +07 [8999] LOG:  background worker "mtm-resolver" (PID 9134) exited with exit code 1
+2022-07-10 13:13:07.487 +07 [9147] LOG:  [MTM] [mtm-logrep-receiver-1-3] receiver mtm-logrep-receiver-1-3 is exiting
+2022-07-10 13:13:07.488 +07 [8999] LOG:  background worker "mtm-logrep-receiver-1-3" (PID 9147) exited with exit code 1
+2022-07-10 13:13:07.500 +07 [9145] LOG:  [MTM] [mtm-logrep-receiver-1-2] receiver mtm-logrep-receiver-1-2 is exiting
+2022-07-10 13:13:07.501 +07 [8999] LOG:  background worker "mtm-logrep-receiver-1-2" (PID 9145) exited with exit code 1
+2022-07-10 13:13:07.570 +07 [8999] LOG:  background worker "mtm-monitor" (PID 9117) exited with exit code 1
+2022-07-10 13:13:07.570 +07 [9002] LOG:  shutting down
+2022-07-10 13:13:07.583 +07 [8999] LOG:  database system is shut down
