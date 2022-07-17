@@ -14,17 +14,27 @@
 * cd ../../ && make install
 
 ## Run
-* delete dc\* and logs dirs
 * ./scripts/bootstrap.sh
-* ./scripts/start_all.sh start
+* ./scripts/poke_all.sh start
 * ./scripts/create_db.sh
-...
-* ./start_all.sh stop 
+* ./scripts/init_mmts.sh
+
+## Stop & cleanup
+* ./poke_all.sh stop 
+* delete dc\* and logs dirs
 
 ## Attach 
 * connect with
 
-    psql -U andy -p 5411 -h localhost -a -d postgres
+    $ psql -U andy -h localhost -a -d postgres -p 5411
+    $ psql -U mtmuser -h localhost -a -d dvdrental -p 5411
 
-* apply stuff from `./notes/scripts.cheat` - create + either of two selects
-* observe logs failing to find `"mtm scheme"`
+or run batch selects with p.e.
+    $ ./scripts/run_on_all.sh "select * from mtm.status();"
+
+## Give load
+
+*yes i know about sql injections, please leave*
+use `scripts/update_cat.sh <port> <category_name_suffix>` 
+
+## Configure replication

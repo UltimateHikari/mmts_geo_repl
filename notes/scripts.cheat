@@ -1,9 +1,12 @@
+--- dc1:
 CREATE EXTENSION multimaster;
-SELECT mtm.init_cluster('dbname=mydb user=mtmuser host=localhost port=5411', '{"dbname=mydb user=mtmuser host=localhost port=5412", "dbname=mydb user=mtmuser host=localhost port=5413"}');
+SELECT mtm.init_cluster('dbname=dvdrental user=mtmuser host=localhost port=5411', '{"dbname=dvdrental user=mtmuser host=localhost port=5412", "dbname=dvdrental user=mtmuser host=localhost port=5413"}');
 
-SELECT mtm.init_cluster('dbname=mydb user=mtmuser host=localhost port=5421', '{"dbname=mydb user=mtmuser host=localhost port=5422", "dbname=mydb user=mtmuser host=localhost port=5423"}');
+--- dc2:
+CREATE EXTENSION multimaster;
+SELECT mtm.init_cluster('dbname=dvdrental user=mtmuser host=localhost port=5421', '{"dbname=dvdrental user=mtmuser host=localhost port=5422", "dbname=dvdrental user=mtmuser host=localhost port=5423"}');
 
-
+--- deprecated:
 //SELECT mtm.init_cluster('postgresql://mtmuser:mtmuserpassword@localhost:5411/mydb',
 '{"postgresql://mtmuser:mtmuserpassword@localhost:5412/mydb", "postgresql://mtmuser:mtmuserpassword@localhost:5413/mydb"}');
 

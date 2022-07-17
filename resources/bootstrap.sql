@@ -1,3 +1,5 @@
 CREATE USER mtmuser WITH SUPERUSER PASSWORD 'mtmuserpassword';
-CREATE DATABASE mydb OWNER mtmuser;
+CREATE USER postgres SUPERUSER;
+
+CREATE DATABASE dvdrental OWNER mtmuser;
 

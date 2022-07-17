@@ -1,6 +1,7 @@
 #!/bin/bash
 INITDB=/usr/local/pgsql/bin/initdb
 CONF=./resources/postgresql.conf
+RECV=./resources/postgresql-recv.conf
 
 mkdir -p dc1
 cd dc1
@@ -29,6 +30,7 @@ $INITDB -D ./dc2/node23
 cp $CONF ./dc1/node11/
 cp $CONF ./dc1/node12/
 cp $CONF ./dc1/node13/
-cp $CONF ./dc2/node21/
+#cp $CONF ./dc2/node21/
+cp $RECV ./dc2/node21/postgresql.conf
 cp $CONF ./dc2/node22/
 cp $CONF ./dc2/node23/
