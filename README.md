@@ -14,13 +14,15 @@
 * cd ../../ && make install
 
 ## Run
-* ./scripts/bootstrap.sh
-* ./scripts/poke_all.sh start
-* ./scripts/create_db.sh
-* ./scripts/init_mmts.sh
+* `./scripts/bootstrap.sh`
+* `./scripts/poke_all.sh start`
+* `./scripts/create_db.sh`
+* `./scripts/init_mmts.sh`
+
+* or just `./full_bootstrap.sh`
 
 ## Stop & cleanup
-* ./poke_all.sh stop 
+* `./poke_all.sh stop` 
 * delete dc\* and logs dirs
 
 ## Attach 
@@ -38,3 +40,4 @@ or run batch selects with p.e.
 use `scripts/update_cat.sh <port> <category_name_suffix>` 
 
 ## Configure replication
+* ./scripts/subscribe.sh <publisher port> <subscriber port>
