@@ -37,7 +37,11 @@ or run batch selects with p.e.
 ## Give load
 
 *yes i know about sql injections, please leave*
-use `scripts/update_cat.sh <port> <category_name_suffix>` 
+Cases: 
+1. use `scripts/update_cat.sh <port> <category_name_suffix>` 
+2. use `scripts/create_tt_table <>` and them `scripts/update_incrementless.sh <><>` 
+
+
 
 ## Configure replication
 * ./scripts/subscribe.sh <publisher port> <subscriber port>

@@ -1,365 +1,173 @@
-2022-07-17 22:37:26.235 +07 [871244] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
-2022-07-17 22:37:26.236 +07 [871244] LOG:  listening on IPv6 address "::1", port 5413
-2022-07-17 22:37:26.236 +07 [871244] LOG:  listening on IPv4 address "127.0.0.1", port 5413
-2022-07-17 22:37:26.279 +07 [871244] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5413"
-2022-07-17 22:37:26.318 +07 [871245] LOG:  database system was shut down at 2022-07-17 22:37:10 +07
-2022-07-17 22:37:26.322 +07 [871244] LOG:  database system is ready to accept connections
-2022-07-17 22:37:42.792 +07 [871330] LOG:  [MTM] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
-2022-07-17 22:37:42.795 +07 [871330] LOG:  [MTM] mtm_after_node_create 2
-2022-07-17 22:37:42.795 +07 [871330] LOG:  [MTM] mtm_after_node_create 3
-2022-07-17 22:37:42.796 +07 [871330] LOG:  [MTM] mtm_after_node_create 1
-2022-07-17 22:37:42.796 +07 [871333] LOG:  [MTM] [mtm-monitor] monitor started
-2022-07-17 22:37:42.801 +07 [871333] LOG:  [MTM] [mtm-monitor] loaded state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
-2022-07-17 22:37:42.806 +07 [871333] LOG:  [MTM] [mtm-monitor] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
-2022-07-17 22:37:42.806 +07 [871333] LOG:  [MTM] [mtm-monitor] sending non-tx do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_3_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$;  DDL: non-concurrent
-2022-07-17 22:37:42.811 +07 [871337] LOG:  [MTM] [STATE] dmq receiver from node 2 connected
-2022-07-17 22:37:42.811 +07 [871337] FATAL:  [MTM] mtm-replier is not loaded yet
-2022-07-17 22:37:42.811 +07 [871337] LOG:  [MTM] [STATE] dmq receiver from node 2 disconnected
-2022-07-17 22:37:42.826 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node1
-2022-07-17 22:37:42.826 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 connected
-2022-07-17 22:37:42.885 +07 [871339] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 22:37:42.885 +07 [871339] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 22:37:42.885 +07 [871339] ERROR:  receiver mtm-logrep-receiver-3-1 exits as dmq connection to node 1 is not yet established
-2022-07-17 22:37:42.904 +07 [871339] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
-2022-07-17 22:37:42.904 +07 [871244] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 871339) exited with exit code 1
-2022-07-17 22:37:43.091 +07 [871333] LOG:  logical decoding found consistent point at 0/1B0D898
-2022-07-17 22:37:43.091 +07 [871333] DETAIL:  There are no running transactions.
-2022-07-17 22:37:43.097 +07 [871333] LOG:  [MTM] [mtm-monitor] started workers for node 1
-2022-07-17 22:37:43.110 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [DMQ] failed to send message to node1: server closed the connection unexpectedly
+2022-07-22 07:32:26.386 +07 [2262] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
+2022-07-22 07:32:26.387 +07 [2262] LOG:  listening on IPv6 address "::1", port 5413
+2022-07-22 07:32:26.387 +07 [2262] LOG:  listening on IPv4 address "127.0.0.1", port 5413
+2022-07-22 07:32:26.388 +07 [2262] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5413"
+2022-07-22 07:32:26.391 +07 [2264] LOG:  database system was shut down at 2022-07-22 07:32:24 +07
+2022-07-22 07:32:26.395 +07 [2262] LOG:  database system is ready to accept connections
+2022-07-22 07:32:29.910 +07 [2346] LOG:  [MTM] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
+2022-07-22 07:32:29.915 +07 [2346] LOG:  [MTM] mtm_after_node_create 2
+2022-07-22 07:32:29.915 +07 [2346] LOG:  [MTM] mtm_after_node_create 3
+2022-07-22 07:32:29.915 +07 [2346] LOG:  [MTM] mtm_after_node_create 1
+2022-07-22 07:32:29.916 +07 [2349] LOG:  [MTM] [mtm-monitor] monitor started
+2022-07-22 07:32:29.921 +07 [2349] LOG:  [MTM] [mtm-monitor] loaded state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
+2022-07-22 07:32:29.928 +07 [2349] LOG:  [MTM] [mtm-monitor] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=1, last_vote.members=111
+2022-07-22 07:32:29.928 +07 [2349] LOG:  [MTM] [mtm-monitor] sending non-tx do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_3_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$;  DDL: non-concurrent
+2022-07-22 07:32:29.929 +07 [2351] LOG:  [MTM] [STATE] dmq receiver from node 2 connected
+2022-07-22 07:32:29.929 +07 [2351] FATAL:  [MTM] mtm-replier is not loaded yet
+2022-07-22 07:32:29.929 +07 [2351] LOG:  [MTM] [STATE] dmq receiver from node 2 disconnected
+2022-07-22 07:32:29.951 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node1
+2022-07-22 07:32:29.951 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 connected
+2022-07-22 07:32:29.961 +07 [2349] LOG:  logical decoding found consistent point at 0/1B0D860
+2022-07-22 07:32:29.961 +07 [2349] DETAIL:  There are no running transactions.
+2022-07-22 07:32:29.968 +07 [2349] LOG:  [MTM] [mtm-monitor] started workers for node 1
+2022-07-22 07:32:29.986 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node2
+2022-07-22 07:32:29.986 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 2 connected
+2022-07-22 07:32:29.992 +07 [2366] LOG:  [MTM] [STATE] dmq receiver from node 1 connected
+2022-07-22 07:32:29.992 +07 [2366] FATAL:  [MTM] mtm-replier is not loaded yet
+2022-07-22 07:32:29.992 +07 [2366] LOG:  [MTM] [STATE] dmq receiver from node 1 disconnected
+2022-07-22 07:32:29.995 +07 [2349] LOG:  logical decoding found consistent point at 0/1B0D9B0
+2022-07-22 07:32:29.995 +07 [2349] DETAIL:  There are no running transactions.
+2022-07-22 07:32:30.001 +07 [2349] LOG:  [MTM] [mtm-monitor] started workers for node 2
+2022-07-22 07:32:30.001 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-resolver is dead, restarting it
+2022-07-22 07:32:30.001 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-campaigner is dead, restarting it
+2022-07-22 07:32:30.001 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-replier is dead, restarting it
+2022-07-22 07:32:30.001 +07 [2358] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
+2022-07-22 07:32:30.001 +07 [2358] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
+2022-07-22 07:32:30.001 +07 [2358] ERROR:  receiver mtm-logrep-receiver-3-1 exits as dmq connection to node 1 is not yet established
+2022-07-22 07:32:30.002 +07 [2368] LOG:  [MTM] [mtm-campaigner] campaigner started
+2022-07-22 07:32:30.003 +07 [2367] LOG:  [MTM] [mtm-replier] replier started
+2022-07-22 07:32:30.006 +07 [2369] LOG:  [MTM] [mtm-resolver] resolver started
+2022-07-22 07:32:30.025 +07 [2358] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
+2022-07-22 07:32:30.026 +07 [2262] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 2358) exited with exit code 1
+2022-07-22 07:32:30.039 +07 [2363] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
+2022-07-22 07:32:30.039 +07 [2363] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
+2022-07-22 07:32:30.039 +07 [2363] ERROR:  receiver mtm-logrep-receiver-3-2 exits as dmq connection to node 2 is not yet established
+2022-07-22 07:32:30.063 +07 [2363] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
+2022-07-22 07:32:30.064 +07 [2262] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 2363) exited with exit code 1
+2022-07-22 07:32:30.186 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [DMQ] failed to send message to node1: server closed the connection unexpectedly
 		This probably means the server terminated abnormally
 		before or while processing the request.
 	
-2022-07-17 22:37:43.110 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 disconnected
-2022-07-17 22:37:43.114 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node2
-2022-07-17 22:37:43.114 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 2 connected
-2022-07-17 22:37:43.123 +07 [871350] LOG:  [MTM] [STATE] dmq receiver from node 1 connected
-2022-07-17 22:37:43.123 +07 [871350] FATAL:  [MTM] mtm-replier is not loaded yet
-2022-07-17 22:37:43.123 +07 [871350] LOG:  [MTM] [STATE] dmq receiver from node 1 disconnected
-2022-07-17 22:37:43.125 +07 [871333] LOG:  logical decoding found consistent point at 0/1B0D9E8
-2022-07-17 22:37:43.125 +07 [871333] DETAIL:  There are no running transactions.
-2022-07-17 22:37:43.131 +07 [871333] LOG:  [MTM] [mtm-monitor] started workers for node 2
-2022-07-17 22:37:43.131 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-resolver is dead, restarting it
-2022-07-17 22:37:43.131 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-campaigner is dead, restarting it
-2022-07-17 22:37:43.131 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-replier is dead, restarting it
-2022-07-17 22:37:43.132 +07 [871351] LOG:  [MTM] [mtm-replier] replier started
-2022-07-17 22:37:43.132 +07 [871352] LOG:  [MTM] [mtm-campaigner] campaigner started
-2022-07-17 22:37:43.133 +07 [871353] LOG:  [MTM] [mtm-resolver] resolver started
-2022-07-17 22:37:43.160 +07 [871347] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 22:37:43.160 +07 [871347] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 22:37:43.160 +07 [871347] ERROR:  receiver mtm-logrep-receiver-3-2 exits as dmq connection to node 2 is not yet established
-2022-07-17 22:37:43.180 +07 [871347] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
-2022-07-17 22:37:43.181 +07 [871244] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 871347) exited with exit code 1
-2022-07-17 22:37:43.318 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node1
-2022-07-17 22:37:43.318 +07 [871252] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 connected
-2022-07-17 22:37:43.514 +07 [871384] LOG:  [MTM] [STATE] dmq receiver from node 2 connected
-2022-07-17 22:37:43.716 +07 [871352] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=2, last_vote.members=011
-2022-07-17 22:37:43.716 +07 [871352] LOG:  [MTM] [mtm-campaigner] proposed and voted myself for gen num=2, members=011, configured=111, clique=011
-2022-07-17 22:37:43.717 +07 [871352] LOG:  [MTM] [mtm-campaigner] failed election of gen num=2, members=011, configured=111, nvotes=1, not_polled_candidates=0
-2022-07-17 22:37:43.719 +07 [871352] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=1, current_gen_members=111, current_gen_configured=111, donors=111, last_online_in=1, last_vote.num=2, last_vote.members=0
-2022-07-17 22:37:43.819 +07 [871387] LOG:  [MTM] [STATE] dmq receiver from node 1 connected
-2022-07-17 22:37:43.917 +07 [871384] LOG:  [MTM] receive mode set to disabled
-2022-07-17 22:37:43.919 +07 [871384] LOG:  [MTM] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=1, last_vote.num=2, last_vote.members=0
-2022-07-17 22:37:43.919 +07 [871384] LOG:  [MTM] [STATE] switched to dead in generation num=2, members=11, donors=11, last_vote.num=2
-2022-07-17 22:37:43.919 +07 [871352] LOG:  [MTM] [mtm-campaigner] receive mode set to recovery from node 2
-2022-07-17 22:37:43.919 +07 [871352] LOG:  [MTM] [mtm-campaigner] set to catch up from node 2 with max last_online_in=2 collected among connected=111
-2022-07-17 22:37:45.183 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
-2022-07-17 22:37:45.183 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
-2022-07-17 22:37:45.227 +07 [871390] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 22:37:45.227 +07 [871390] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in recovery mode
-2022-07-17 22:37:45.228 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 22:37:45.232 +07 [871390] LOG:  [MTM] [mtm-logrep-receiver-3-2] load_filter_map from 1559560 node_id=0 current_last_lsn=1B0DAD0
-2022-07-17 22:37:45.235 +07 [871390] LOG:  [MTM] [mtm-logrep-receiver-3-2] starting receiver: replication_node = 2, mode = recovery, remote_start = 0, syncpoint_vector (origin/local) = {1: 0/1559560, 2: 0/1559560, }
-2022-07-17 22:37:45.237 +07 [871390] LOG:  [MTM] [mtm-logrep-receiver-3-2] syncpoint created, origin_lsn=0/1B0DB08
-2022-07-17 22:37:45.237 +07 [871390] LOG:  [MTM] [mtm-logrep-receiver-3-2] caughtup from node 2
-2022-07-17 22:37:45.940 +07 [871352] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=1, last_vote.num=3, last_vote.members=111
-2022-07-17 22:37:45.940 +07 [871352] LOG:  [MTM] [mtm-campaigner] proposed and voted myself for gen num=3, members=111, configured=111, clique=111
-2022-07-17 22:37:45.944 +07 [871352] LOG:  [MTM] [mtm-campaigner] won election of gen num=3, members=111, configured=111, donors=11
-2022-07-17 22:37:45.947 +07 [871352] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=1, last_vote.num=3, last_vote.members=111
-2022-07-17 22:37:45.947 +07 [871352] LOG:  [MTM] [mtm-campaigner] receive mode set to recovery from node 1
-2022-07-17 22:37:45.947 +07 [871352] LOG:  [MTM] [mtm-campaigner] [STATE] switched to recovery in generation num=3, members=111, donors=11, donor=1
-2022-07-17 22:37:45.963 +07 [871390] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting to reconnect in another mode
-2022-07-17 22:37:45.963 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in recovery mode
-2022-07-17 22:37:45.964 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
-2022-07-17 22:37:45.967 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] load_filter_map from 1559560 node_id=0 current_last_lsn=1B0DB08
-2022-07-17 22:37:45.970 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] starting receiver: replication_node = 1, mode = recovery, remote_start = 0, syncpoint_vector (origin/local) = {1: 0/1559560, 2: 0/1559560, }
-2022-07-17 22:37:45.972 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
-2022-07-17 22:37:46.003 +07 [871397] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 22:37:46.049 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=3, last_vote.members=111
-2022-07-17 22:37:46.052 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=3, last_vote.members=111
-2022-07-17 22:37:46.052 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] receive mode set to normal
-2022-07-17 22:37:46.052 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] [STATE] switched to online in generation num=3, members=111, donors=11 by applying ParallelSafe logged at 0/1B0DB50
-2022-07-17 22:37:46.068 +07 [871391] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting to reconnect in another mode
-2022-07-17 22:37:46.068 +07 [871397] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 22:37:46.068 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
-2022-07-17 22:37:46.071 +07 [871397] LOG:  [MTM] [mtm-logrep-receiver-3-2] load_filter_map from 1559560 node_id=2 current_last_lsn=1B0DB60
-2022-07-17 22:37:46.074 +07 [871397] LOG:  [MTM] [mtm-logrep-receiver-3-2] starting receiver: replication_node = 2, mode = normal, remote_start = 0, syncpoint_vector (origin/local) = {2: 0/1559560, }
-2022-07-17 22:37:46.108 +07 [871399] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 22:37:46.108 +07 [871399] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 22:37:46.113 +07 [871399] LOG:  [MTM] [mtm-logrep-receiver-3-1] load_filter_map from 1559560 node_id=1 current_last_lsn=1B0DB60
-2022-07-17 22:37:46.115 +07 [871399] LOG:  [MTM] [mtm-logrep-receiver-3-1] starting receiver: replication_node = 1, mode = normal, remote_start = 0, syncpoint_vector (origin/local) = {1: 0/1559560, }
-2022-07-17 22:37:47.856 +07 [871405] LOG:  [MTM] [mtm-logrep-sender-3-2] walsender to node 2 starts in normal mode
-2022-07-17 22:37:47.856 +07 [871405] LOG:  starting logical decoding for slot "mtm_slot_2"
-2022-07-17 22:37:47.856 +07 [871405] DETAIL:  Streaming transactions committing after 0/1B0DA20, reading WAL from 0/1B0D9E8.
-2022-07-17 22:37:47.856 +07 [871405] LOG:  logical decoding found consistent point at 0/1B0D9E8
-2022-07-17 22:37:47.856 +07 [871405] DETAIL:  There are no running transactions.
-2022-07-17 22:37:47.888 +07 [871397] LOG:  [MTM] [mtm-logrep-receiver-3-2] syncpoint: await for parallel workers to finish
-2022-07-17 22:37:47.927 +07 [871397] LOG:  [MTM] [mtm-logrep-receiver-3-2] syncpoint processed: node_id=2, origin_lsn=0/1B0DBB8, receiver_lsn=0/1B0DBA8
-2022-07-17 22:37:48.153 +07 [871399] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint: await for parallel workers to finish
-2022-07-17 22:37:48.167 +07 [871408] LOG:  [MTM] [mtm-logrep-sender-3-1] walsender to node 1 starts in normal mode
-2022-07-17 22:37:48.167 +07 [871408] LOG:  starting logical decoding for slot "mtm_slot_1"
-2022-07-17 22:37:48.167 +07 [871408] DETAIL:  Streaming transactions committing after 0/1B0D8D0, reading WAL from 0/1B0D898.
-2022-07-17 22:37:48.167 +07 [871408] LOG:  logical decoding found consistent point at 0/1B0D898
-2022-07-17 22:37:48.167 +07 [871408] DETAIL:  There are no running transactions.
-2022-07-17 22:37:48.209 +07 [871399] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint processed: node_id=1, origin_lsn=0/1B0DB88, receiver_lsn=0/1B0DE68
-2022-07-17 22:53:20.295 +07 [872355] ERROR:  relation "mtm_status" does not exist at character 15
-2022-07-17 22:53:20.295 +07 [872355] STATEMENT:  select * from mtm_status;
-2022-07-17 22:55:16.392 +07 [872465] LOG:  [MTM] [mtm-logrep-receiver-3-1-dynworker-1] bgwpool worker started
-2022-07-17 23:45:10.940 +07 [871387] LOG:  [DMQ] EOF on connection
-2022-07-17 23:45:10.940 +07 [871387] STATEMENT:  select mtm.dmq_receiver_loop('node1', 2000)
-2022-07-17 23:45:10.941 +07 [871399] ERROR:  could not receive data from WAL stream: FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:10.941 +07 [871399] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
-2022-07-17 23:45:10.941 +07 [871387] LOG:  [MTM] [STATE] dmq receiver from node 1 disconnected
-2022-07-17 23:45:10.941 +07 [872465] FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:10.941 +07 [872465] LOG:  [MTM] [mtm-logrep-receiver-3-1-dynworker-1] exiting
-2022-07-17 23:45:10.944 +07 [871352] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=4, last_vote.members=011
-2022-07-17 23:45:10.944 +07 [871352] LOG:  [MTM] [mtm-campaigner] proposed and voted myself for gen num=4, members=011, configured=111, clique=011
-2022-07-17 23:45:10.944 +07 [871352] LOG:  [MTM] [mtm-campaigner] won election of gen num=4, members=011, configured=111, donors=011
-2022-07-17 23:45:10.948 +07 [871352] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=4, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=4, last_vote.num=4, last_vote.members=011
-2022-07-17 23:45:10.951 +07 [871352] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=4, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=4, last_vote.num=4, last_vote.members=011
-2022-07-17 23:45:10.951 +07 [871352] LOG:  [MTM] [mtm-campaigner] receive mode set to normal
-2022-07-17 23:45:10.951 +07 [871352] LOG:  [MTM] [mtm-campaigner] [STATE] switched to online in generation num=4, members=011, donors=011 as donor, ParallelSafe logged at 0/1B5F1B0
-2022-07-17 23:45:10.960 +07 [871408] LOG:  [MTM] [mtm-logrep-sender-3-1] walsender to node 1 exited
-2022-07-17 23:45:10.974 +07 [871244] LOG:  background worker "mtm-logrep-receiver-3-1-dynworker-1" (PID 872465) exited with exit code 1
-2022-07-17 23:45:10.975 +07 [871244] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 871399) exited with exit code 1
-2022-07-17 23:45:10.975 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
-2022-07-17 23:45:11.018 +07 [874239] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 23:45:11.018 +07 [874239] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 23:45:11.018 +07 [874239] ERROR:  receiver mtm-logrep-receiver-3-1 exits as dmq connection to node 1 is not yet established
-2022-07-17 23:45:11.037 +07 [874239] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
-2022-07-17 23:45:11.038 +07 [871244] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 874239) exited with exit code 1
-2022-07-17 23:45:11.141 +07 [871384] LOG:  [DMQ] EOF on connection
-2022-07-17 23:45:11.141 +07 [871384] STATEMENT:  select mtm.dmq_receiver_loop('node2', 2000)
-2022-07-17 23:45:11.141 +07 [871384] LOG:  [MTM] [STATE] dmq receiver from node 2 disconnected
-2022-07-17 23:45:11.141 +07 [871397] FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:11.157 +07 [871405] LOG:  [MTM] [mtm-logrep-sender-3-2] walsender to node 2 exited
-2022-07-17 23:45:11.158 +07 [871397] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
-2022-07-17 23:45:11.159 +07 [871244] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 871397) exited with exit code 1
-2022-07-17 23:45:11.159 +07 [871333] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
-2022-07-17 23:45:11.200 +07 [874241] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 23:45:11.200 +07 [874241] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 23:45:11.200 +07 [874241] ERROR:  receiver mtm-logrep-receiver-3-2 exits as dmq connection to node 2 is not yet established
-2022-07-17 23:45:11.218 +07 [874241] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
-2022-07-17 23:45:11.219 +07 [871244] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 874241) exited with exit code 1
-2022-07-17 23:45:11.340 +07 [871244] LOG:  received fast shutdown request
-2022-07-17 23:45:11.341 +07 [871244] LOG:  aborting any active transactions
-2022-07-17 23:45:11.341 +07 [871353] FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:11.341 +07 [871252] FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:11.341 +07 [871352] FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:11.341 +07 [871333] FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:11.341 +07 [871351] FATAL:  terminating connection due to administrator command
-2022-07-17 23:45:11.342 +07 [871333] LOG:  [MTM] [mtm-monitor] monitor exiting
-2022-07-17 23:45:11.342 +07 [871351] LOG:  [MTM] [mtm-replier] replier exiting
-2022-07-17 23:45:11.342 +07 [871244] LOG:  background worker "logical replication launcher" (PID 871253) exited with exit code 1
-2022-07-17 23:45:11.342 +07 [871244] LOG:  background worker "mtm-dmq-sender" (PID 871252) exited with exit code 1
-2022-07-17 23:45:11.343 +07 [871244] LOG:  background worker "mtm-campaigner" (PID 871352) exited with exit code 1
-2022-07-17 23:45:11.343 +07 [871244] LOG:  background worker "mtm-resolver" (PID 871353) exited with exit code 1
-2022-07-17 23:45:11.343 +07 [871244] LOG:  background worker "mtm-replier" (PID 871351) exited with exit code 1
-2022-07-17 23:45:11.343 +07 [871244] LOG:  background worker "mtm-monitor" (PID 871333) exited with exit code 1
-2022-07-17 23:45:11.343 +07 [871246] LOG:  shutting down
-2022-07-17 23:45:11.356 +07 [871244] LOG:  database system is shut down
-2022-07-17 23:45:14.302 +07 [874290] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
-2022-07-17 23:45:14.303 +07 [874290] LOG:  listening on IPv6 address "::1", port 5413
-2022-07-17 23:45:14.303 +07 [874290] LOG:  listening on IPv4 address "127.0.0.1", port 5413
-2022-07-17 23:45:14.303 +07 [874290] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5413"
-2022-07-17 23:45:14.307 +07 [874291] LOG:  database system was shut down at 2022-07-17 23:45:11 +07
-2022-07-17 23:45:14.312 +07 [874291] LOG:  recovered replication state of node 2 to 0/1B0DFF0
-2022-07-17 23:45:14.312 +07 [874291] LOG:  recovered replication state of node 4 to 0/1B5D200
-2022-07-17 23:45:14.315 +07 [874290] LOG:  database system is ready to accept connections
-2022-07-17 23:45:14.316 +07 [874300] LOG:  [MTM] [mtm-monitor] monitor started
-2022-07-17 23:45:14.322 +07 [874302] ERROR:  multimaster is not configured
-2022-07-17 23:45:14.322 +07 [874302] STATEMENT:  select mtm.dmq_receiver_loop('node1', 2000)
-2022-07-17 23:45:14.324 +07 [874300] LOG:  [MTM] [mtm-monitor] loaded state: current_gen_num=4, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=4, last_vote.num=4, last_vote.members=011
-2022-07-17 23:45:14.324 +07 [874300] LOG:  [MTM] [mtm-monitor] sending non-tx do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_3_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$;  DDL: non-concurrent
-2022-07-17 23:45:14.325 +07 [874300] LOG:  [MTM] [mtm-monitor] started workers for node 1
-2022-07-17 23:45:14.325 +07 [874300] LOG:  [MTM] [mtm-monitor] started workers for node 2
-2022-07-17 23:45:14.325 +07 [874300] LOG:  [MTM] [mtm-monitor] mtm-resolver is dead, restarting it
-2022-07-17 23:45:14.325 +07 [874300] LOG:  [MTM] [mtm-monitor] mtm-campaigner is dead, restarting it
-2022-07-17 23:45:14.325 +07 [874300] LOG:  [MTM] [mtm-monitor] mtm-replier is dead, restarting it
-2022-07-17 23:45:14.326 +07 [874303] LOG:  [MTM] [mtm-replier] replier started
-2022-07-17 23:45:14.326 +07 [874304] LOG:  [MTM] [mtm-campaigner] campaigner started
-2022-07-17 23:45:14.327 +07 [874306] LOG:  [MTM] [mtm-resolver] resolver started
-2022-07-17 23:45:14.330 +07 [874298] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node1
-2022-07-17 23:45:14.330 +07 [874298] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 connected
-2022-07-17 23:45:14.330 +07 [874298] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node2
-2022-07-17 23:45:14.330 +07 [874298] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 2 connected
-2022-07-17 23:45:14.368 +07 [874309] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 23:45:14.368 +07 [874309] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 23:45:14.368 +07 [874309] ERROR:  receiver mtm-logrep-receiver-3-1 exits as dmq connection to node 1 is not yet established
-2022-07-17 23:45:14.368 +07 [874307] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 23:45:14.368 +07 [874307] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 23:45:14.368 +07 [874307] ERROR:  receiver mtm-logrep-receiver-3-2 exits as dmq connection to node 2 is not yet established
-2022-07-17 23:45:14.387 +07 [874309] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
-2022-07-17 23:45:14.388 +07 [874307] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
-2022-07-17 23:45:14.388 +07 [874290] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 874309) exited with exit code 1
-2022-07-17 23:45:14.389 +07 [874290] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 874307) exited with exit code 1
-2022-07-17 23:45:14.427 +07 [874324] LOG:  [MTM] [STATE] dmq receiver from node 2 connected
-2022-07-17 23:45:14.727 +07 [874364] LOG:  [MTM] [STATE] dmq receiver from node 1 connected
-2022-07-17 23:45:16.232 +07 [874374] LOG:  starting logical decoding for slot "mtm_slot_1"
-2022-07-17 23:45:16.232 +07 [874374] DETAIL:  Streaming transactions committing after 0/1B0DB08, reading WAL from 0/1B0D9E8.
-2022-07-17 23:45:16.232 +07 [874374] STATEMENT:  select pg_replication_slot_advance('mtm_slot_1', '0/1B0DB08');
-2022-07-17 23:45:16.232 +07 [874374] LOG:  logical decoding found consistent point at 0/1B0D9E8
-2022-07-17 23:45:16.232 +07 [874374] DETAIL:  There are no running transactions.
-2022-07-17 23:45:16.232 +07 [874374] STATEMENT:  select pg_replication_slot_advance('mtm_slot_1', '0/1B0DB08');
-2022-07-17 23:45:18.943 +07 [874303] LOG:  [MTM] [mtm-replier] saved state: current_gen_num=4, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=4, last_vote.num=5, last_vote.members=111
-2022-07-17 23:45:19.144 +07 [874364] LOG:  [MTM] saved state: current_gen_num=5, current_gen_members=111, current_gen_configured=111, donors=011, last_online_in=5, last_vote.num=5, last_vote.members=111
-2022-07-17 23:45:19.149 +07 [874364] LOG:  [MTM] saved state: current_gen_num=5, current_gen_members=111, current_gen_configured=111, donors=011, last_online_in=5, last_vote.num=5, last_vote.members=111
-2022-07-17 23:45:19.149 +07 [874364] LOG:  [MTM] receive mode set to normal
-2022-07-17 23:45:19.149 +07 [874364] LOG:  [MTM] [STATE] switched to online in generation num=5, members=111, donors=011 as donor, ParallelSafe logged at 0/1B5F428
-2022-07-17 23:45:19.176 +07 [874388] LOG:  [MTM] [mtm-logrep-sender-3-1] walsender to node 1 starts in normal mode
-2022-07-17 23:45:19.176 +07 [874388] LOG:  starting logical decoding for slot "mtm_slot_1"
-2022-07-17 23:45:19.176 +07 [874388] DETAIL:  Streaming transactions committing after 0/1B0DB08, reading WAL from 0/1B0D9E8.
-2022-07-17 23:45:19.176 +07 [874388] LOG:  logical decoding found consistent point at 0/1B0D9E8
-2022-07-17 23:45:19.176 +07 [874388] DETAIL:  There are no running transactions.
-2022-07-17 23:45:19.266 +07 [874393] LOG:  [MTM] [mtm-logrep-sender-3-2] walsender to node 2 starts in normal mode
-2022-07-17 23:45:19.266 +07 [874393] LOG:  starting logical decoding for slot "mtm_slot_2"
-2022-07-17 23:45:19.266 +07 [874393] DETAIL:  Streaming transactions committing after 0/1B0DA20, reading WAL from 0/1B0D9E8.
-2022-07-17 23:45:19.266 +07 [874393] LOG:  logical decoding found consistent point at 0/1B0D9E8
-2022-07-17 23:45:19.266 +07 [874393] DETAIL:  There are no running transactions.
-2022-07-17 23:45:19.326 +07 [874300] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
-2022-07-17 23:45:19.326 +07 [874300] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
-2022-07-17 23:45:19.369 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 23:45:19.369 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 23:45:19.369 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 23:45:19.369 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 23:45:19.374 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] load_filter_map from 1B0DBA8 node_id=2 current_last_lsn=1B5F428
-2022-07-17 23:45:19.374 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] load_filter_map from 1B0DE68 node_id=1 current_last_lsn=1B5F428
-2022-07-17 23:45:19.374 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] starting receiver: replication_node = 2, mode = normal, remote_start = 1B0DBB8, syncpoint_vector (origin/local) = {2: 1B0DBB8/1B0DBA8, }
-2022-07-17 23:45:19.374 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] starting receiver: replication_node = 1, mode = normal, remote_start = 1B0DB88, syncpoint_vector (origin/local) = {1: 1B0DB88/1B0DE68, }
-2022-07-17 23:45:19.377 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] syncpoint created, origin_lsn=0/1B5F460
-2022-07-17 23:45:19.379 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] executing utility statement do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_2_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$; 
-2022-07-17 23:45:19.381 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] executing utility statement do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_1_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$; 
-2022-07-17 23:45:19.381 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] syncpoint: await for parallel workers to finish
-2022-07-17 23:45:19.381 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint: await for parallel workers to finish
-2022-07-17 23:45:19.385 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] syncpoint processed: node_id=2, origin_lsn=0/1B5F4B8, receiver_lsn=0/1B5F4A8
-2022-07-17 23:45:19.387 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint processed: node_id=1, origin_lsn=0/1B5D578, receiver_lsn=0/1B5F528
-2022-07-17 23:53:22.508 +07 [874364] LOG:  [DMQ] EOF on connection
-2022-07-17 23:53:22.508 +07 [874364] STATEMENT:  select mtm.dmq_receiver_loop('node1', 2000)
-2022-07-17 23:53:22.508 +07 [874364] LOG:  [MTM] [STATE] dmq receiver from node 1 disconnected
-2022-07-17 23:53:22.509 +07 [874396] FATAL:  terminating connection due to administrator command
-2022-07-17 23:53:22.512 +07 [874304] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=5, current_gen_members=111, current_gen_configured=111, donors=011, last_online_in=5, last_vote.num=6, last_vote.members=011
-2022-07-17 23:53:22.512 +07 [874304] LOG:  [MTM] [mtm-campaigner] proposed and voted myself for gen num=6, members=011, configured=111, clique=011
-2022-07-17 23:53:22.513 +07 [874304] LOG:  [MTM] [mtm-campaigner] won election of gen num=6, members=011, configured=111, donors=011
-2022-07-17 23:53:22.516 +07 [874304] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=6, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=6, last_vote.num=6, last_vote.members=011
-2022-07-17 23:53:22.520 +07 [874304] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=6, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=6, last_vote.num=6, last_vote.members=011
-2022-07-17 23:53:22.520 +07 [874304] LOG:  [MTM] [mtm-campaigner] receive mode set to normal
-2022-07-17 23:53:22.520 +07 [874304] LOG:  [MTM] [mtm-campaigner] [STATE] switched to online in generation num=6, members=011, donors=011 as donor, ParallelSafe logged at 0/1B5FEB0
-2022-07-17 23:53:22.528 +07 [874388] LOG:  [MTM] [mtm-logrep-sender-3-1] walsender to node 1 exited
-2022-07-17 23:53:22.542 +07 [874396] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
-2022-07-17 23:53:22.542 +07 [874290] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 874396) exited with exit code 1
-2022-07-17 23:53:22.542 +07 [874300] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
-2022-07-17 23:53:22.585 +07 [877026] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 23:53:22.585 +07 [877026] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 23:53:22.585 +07 [877026] ERROR:  receiver mtm-logrep-receiver-3-1 exits as dmq connection to node 1 is not yet established
-2022-07-17 23:53:22.603 +07 [877026] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
-2022-07-17 23:53:22.604 +07 [874290] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 877026) exited with exit code 1
-2022-07-17 23:53:22.708 +07 [874395] ERROR:  could not receive data from WAL stream: FATAL:  terminating connection due to administrator command
-2022-07-17 23:53:22.708 +07 [874324] LOG:  [DMQ] EOF on connection
-2022-07-17 23:53:22.708 +07 [874324] STATEMENT:  select mtm.dmq_receiver_loop('node2', 2000)
-2022-07-17 23:53:22.709 +07 [874324] LOG:  [MTM] [STATE] dmq receiver from node 2 disconnected
-2022-07-17 23:53:22.725 +07 [874393] LOG:  [MTM] [mtm-logrep-sender-3-2] walsender to node 2 exited
-2022-07-17 23:53:22.725 +07 [874395] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
-2022-07-17 23:53:22.726 +07 [874290] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 874395) exited with exit code 1
-2022-07-17 23:53:22.726 +07 [874300] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
-2022-07-17 23:53:22.766 +07 [877028] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 23:53:22.766 +07 [877028] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 23:53:22.766 +07 [877028] ERROR:  receiver mtm-logrep-receiver-3-2 exits as dmq connection to node 2 is not yet established
-2022-07-17 23:53:22.784 +07 [877028] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
-2022-07-17 23:53:22.785 +07 [874290] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 877028) exited with exit code 1
-2022-07-17 23:53:22.907 +07 [874290] LOG:  received fast shutdown request
-2022-07-17 23:53:22.909 +07 [874290] LOG:  aborting any active transactions
-2022-07-17 23:53:22.909 +07 [874303] FATAL:  terminating connection due to administrator command
-2022-07-17 23:53:22.909 +07 [874306] FATAL:  terminating connection due to administrator command
-2022-07-17 23:53:22.909 +07 [874300] FATAL:  terminating connection due to administrator command
-2022-07-17 23:53:22.909 +07 [874304] FATAL:  terminating connection due to administrator command
-2022-07-17 23:53:22.909 +07 [874298] FATAL:  terminating connection due to administrator command
-2022-07-17 23:53:22.909 +07 [874303] LOG:  [MTM] [mtm-replier] replier exiting
-2022-07-17 23:53:22.909 +07 [874300] LOG:  [MTM] [mtm-monitor] monitor exiting
-2022-07-17 23:53:22.910 +07 [874290] LOG:  background worker "logical replication launcher" (PID 874299) exited with exit code 1
-2022-07-17 23:53:22.910 +07 [874290] LOG:  background worker "mtm-dmq-sender" (PID 874298) exited with exit code 1
-2022-07-17 23:53:22.910 +07 [874290] LOG:  background worker "mtm-replier" (PID 874303) exited with exit code 1
-2022-07-17 23:53:22.910 +07 [874290] LOG:  background worker "mtm-campaigner" (PID 874304) exited with exit code 1
-2022-07-17 23:53:22.910 +07 [874290] LOG:  background worker "mtm-resolver" (PID 874306) exited with exit code 1
-2022-07-17 23:53:22.911 +07 [874290] LOG:  background worker "mtm-monitor" (PID 874300) exited with exit code 1
-2022-07-17 23:53:22.911 +07 [874292] LOG:  shutting down
-2022-07-17 23:53:22.925 +07 [874290] LOG:  database system is shut down
-2022-07-17 23:55:53.745 +07 [877211] LOG:  starting PostgreSQL 13.2 on x86_64-pc-linux-gnu, compiled by gcc (GCC) 12.1.0, 64-bit
-2022-07-17 23:55:53.746 +07 [877211] LOG:  listening on IPv6 address "::1", port 5413
-2022-07-17 23:55:53.746 +07 [877211] LOG:  listening on IPv4 address "127.0.0.1", port 5413
-2022-07-17 23:55:53.747 +07 [877211] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5413"
-2022-07-17 23:55:53.750 +07 [877212] LOG:  database system was shut down at 2022-07-17 23:53:22 +07
-2022-07-17 23:55:53.754 +07 [877212] LOG:  recovered replication state of node 2 to 0/1B5FAF0
-2022-07-17 23:55:53.754 +07 [877212] LOG:  recovered replication state of node 4 to 0/1B5DC08
-2022-07-17 23:55:53.757 +07 [877211] LOG:  database system is ready to accept connections
-2022-07-17 23:55:53.758 +07 [877221] LOG:  [MTM] [mtm-monitor] monitor started
-2022-07-17 23:55:53.766 +07 [877221] LOG:  [MTM] [mtm-monitor] loaded state: current_gen_num=6, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=6, last_vote.num=6, last_vote.members=011
-2022-07-17 23:55:53.766 +07 [877221] LOG:  [MTM] [mtm-monitor] sending non-tx do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_3_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$;  DDL: non-concurrent
-2022-07-17 23:55:53.766 +07 [877223] LOG:  [MTM] [STATE] dmq receiver from node 1 connected
-2022-07-17 23:55:53.766 +07 [877223] FATAL:  [MTM] mtm-replier is not loaded yet
-2022-07-17 23:55:53.766 +07 [877223] LOG:  [MTM] [STATE] dmq receiver from node 1 disconnected
-2022-07-17 23:55:53.767 +07 [877221] LOG:  [MTM] [mtm-monitor] started workers for node 1
-2022-07-17 23:55:53.767 +07 [877221] LOG:  [MTM] [mtm-monitor] started workers for node 2
-2022-07-17 23:55:53.767 +07 [877221] LOG:  [MTM] [mtm-monitor] mtm-resolver is dead, restarting it
-2022-07-17 23:55:53.767 +07 [877221] LOG:  [MTM] [mtm-monitor] mtm-campaigner is dead, restarting it
-2022-07-17 23:55:53.767 +07 [877221] LOG:  [MTM] [mtm-monitor] mtm-replier is dead, restarting it
-2022-07-17 23:55:53.768 +07 [877226] LOG:  [MTM] [mtm-replier] replier started
-2022-07-17 23:55:53.768 +07 [877228] LOG:  [MTM] [mtm-campaigner] campaigner started
-2022-07-17 23:55:53.769 +07 [877230] LOG:  [MTM] [mtm-resolver] resolver started
-2022-07-17 23:55:53.771 +07 [877219] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node1
-2022-07-17 23:55:53.771 +07 [877219] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 connected
-2022-07-17 23:55:53.772 +07 [877219] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node2
-2022-07-17 23:55:53.772 +07 [877219] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 2 connected
-2022-07-17 23:55:53.809 +07 [877224] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 23:55:53.810 +07 [877224] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 23:55:53.810 +07 [877224] ERROR:  receiver mtm-logrep-receiver-3-2 exits as dmq connection to node 2 is not yet established
-2022-07-17 23:55:53.811 +07 [877225] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 23:55:53.811 +07 [877225] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 23:55:53.811 +07 [877225] ERROR:  receiver mtm-logrep-receiver-3-1 exits as dmq connection to node 1 is not yet established
-2022-07-17 23:55:53.829 +07 [877224] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
-2022-07-17 23:55:53.830 +07 [877211] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 877224) exited with exit code 1
-2022-07-17 23:55:53.831 +07 [877225] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
-2022-07-17 23:55:53.831 +07 [877211] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 877225) exited with exit code 1
-2022-07-17 23:55:53.872 +07 [877235] LOG:  [MTM] [STATE] dmq receiver from node 2 connected
-2022-07-17 23:55:54.371 +07 [877292] LOG:  [MTM] [STATE] dmq receiver from node 1 connected
-2022-07-17 23:55:55.675 +07 [877297] LOG:  starting logical decoding for slot "mtm_slot_1"
-2022-07-17 23:55:55.675 +07 [877297] DETAIL:  Streaming transactions committing after 0/1B5F460, reading WAL from 0/1B0E250.
-2022-07-17 23:55:55.675 +07 [877297] STATEMENT:  select pg_replication_slot_advance('mtm_slot_1', '0/1B5F460');
-2022-07-17 23:55:55.675 +07 [877297] LOG:  logical decoding found consistent point at 0/1B0E250
-2022-07-17 23:55:55.675 +07 [877297] DETAIL:  There are no running transactions.
-2022-07-17 23:55:55.675 +07 [877297] STATEMENT:  select pg_replication_slot_advance('mtm_slot_1', '0/1B5F460');
-2022-07-17 23:55:55.741 +07 [877226] LOG:  [MTM] [mtm-replier] saved state: current_gen_num=6, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=6, last_vote.num=7, last_vote.members=111
-2022-07-17 23:55:55.841 +07 [877292] LOG:  [MTM] saved state: current_gen_num=7, current_gen_members=111, current_gen_configured=111, donors=011, last_online_in=7, last_vote.num=7, last_vote.members=111
-2022-07-17 23:55:55.847 +07 [877292] LOG:  [MTM] saved state: current_gen_num=7, current_gen_members=111, current_gen_configured=111, donors=011, last_online_in=7, last_vote.num=7, last_vote.members=111
-2022-07-17 23:55:55.847 +07 [877292] LOG:  [MTM] receive mode set to normal
-2022-07-17 23:55:55.847 +07 [877292] LOG:  [MTM] [STATE] switched to online in generation num=7, members=111, donors=011 as donor, ParallelSafe logged at 0/1B60140
-2022-07-17 23:55:55.873 +07 [877298] LOG:  [MTM] [mtm-logrep-sender-3-1] walsender to node 1 starts in normal mode
-2022-07-17 23:55:55.873 +07 [877298] LOG:  starting logical decoding for slot "mtm_slot_1"
-2022-07-17 23:55:55.873 +07 [877298] DETAIL:  Streaming transactions committing after 0/1B5F460, reading WAL from 0/1B5F120.
-2022-07-17 23:55:55.873 +07 [877298] LOG:  logical decoding found consistent point at 0/1B5F120
-2022-07-17 23:55:55.873 +07 [877298] DETAIL:  There are no running transactions.
-2022-07-17 23:55:58.714 +07 [877326] LOG:  [MTM] [mtm-logrep-sender-3-2] walsender to node 2 starts in normal mode
-2022-07-17 23:55:58.714 +07 [877326] LOG:  starting logical decoding for slot "mtm_slot_2"
-2022-07-17 23:55:58.714 +07 [877326] DETAIL:  Streaming transactions committing after 0/1B0DA20, reading WAL from 0/1B0D9E8.
-2022-07-17 23:55:58.714 +07 [877326] LOG:  logical decoding found consistent point at 0/1B0D9E8
-2022-07-17 23:55:58.714 +07 [877326] DETAIL:  There are no running transactions.
-2022-07-17 23:55:58.768 +07 [877221] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
-2022-07-17 23:55:58.768 +07 [877221] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
-2022-07-17 23:55:58.809 +07 [877328] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
-2022-07-17 23:55:58.809 +07 [877327] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
-2022-07-17 23:55:58.809 +07 [877328] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
-2022-07-17 23:55:58.809 +07 [877327] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
-2022-07-17 23:55:58.813 +07 [877327] LOG:  [MTM] [mtm-logrep-receiver-3-2] load_filter_map from 1B5F4A8 node_id=2 current_last_lsn=1B60140
-2022-07-17 23:55:58.813 +07 [877328] LOG:  [MTM] [mtm-logrep-receiver-3-1] load_filter_map from 1B5F528 node_id=1 current_last_lsn=1B60140
-2022-07-17 23:55:58.813 +07 [877327] LOG:  [MTM] [mtm-logrep-receiver-3-2] starting receiver: replication_node = 2, mode = normal, remote_start = 1B5F4B8, syncpoint_vector (origin/local) = {2: 1B5F4B8/1B5F4A8, }
-2022-07-17 23:55:58.813 +07 [877328] LOG:  [MTM] [mtm-logrep-receiver-3-1] starting receiver: replication_node = 1, mode = normal, remote_start = 1B5D578, syncpoint_vector (origin/local) = {1: 1B5D578/1B5F528, }
-2022-07-17 23:55:58.857 +07 [877327] LOG:  [MTM] [mtm-logrep-receiver-3-2] executing utility statement do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_2_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$; 
-2022-07-17 23:55:58.859 +07 [877328] LOG:  [MTM] [mtm-logrep-receiver-3-1] executing utility statement do $$ declare 	nsp record; begin 	reset session_authorization; 	for nsp in select nspname from pg_namespace where nspname ~ '^mtm_tmp_1_.*' loop 	  perform mtm.set_temp_schema(nsp.nspname); 	  execute format('drop schema if exists %I cascade', format('%s_toast', nsp.nspname)); 	  execute format('drop schema if exists %I cascade', nsp.nspname); 	end loop; end $$; 
+2022-07-22 07:32:30.186 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 disconnected
+2022-07-22 07:32:30.391 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [DMQ] connected to node1
+2022-07-22 07:32:30.391 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 connected
+2022-07-22 07:32:30.600 +07 [2403] LOG:  [MTM] [STATE] dmq receiver from node 1 connected
+2022-07-22 07:32:30.600 +07 [2402] LOG:  [MTM] [STATE] dmq receiver from node 2 connected
+2022-07-22 07:32:30.800 +07 [2402] LOG:  [MTM] receive mode set to disabled
+2022-07-22 07:32:30.803 +07 [2402] LOG:  [MTM] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=1, last_vote.num=2, last_vote.members=11
+2022-07-22 07:32:30.803 +07 [2402] LOG:  [MTM] [STATE] switched to dead in generation num=2, members=11, donors=11, last_vote.num=2
+2022-07-22 07:32:30.803 +07 [2368] LOG:  [MTM] [mtm-campaigner] receive mode set to recovery from node 1
+2022-07-22 07:32:30.803 +07 [2368] LOG:  [MTM] [mtm-campaigner] set to catch up from node 1 with max last_online_in=2 collected among connected=111
+2022-07-22 07:32:32.065 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
+2022-07-22 07:32:32.065 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
+2022-07-22 07:32:32.107 +07 [2406] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
+2022-07-22 07:32:32.107 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
+2022-07-22 07:32:32.107 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in recovery mode
+2022-07-22 07:32:32.111 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] load_filter_map from 1559560 node_id=0 current_last_lsn=1B0DA98
+2022-07-22 07:32:32.115 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] starting receiver: replication_node = 1, mode = recovery, remote_start = 0, syncpoint_vector (origin/local) = {1: 0/1559560, 2: 0/1559560, }
+2022-07-22 07:32:32.116 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint created, origin_lsn=0/1B0DAD0
+2022-07-22 07:32:32.116 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
+2022-07-22 07:32:34.965 +07 [2416] LOG:  [MTM] [mtm-logrep-sender-3-2] walsender to node 2 starts in normal mode
+2022-07-22 07:32:34.965 +07 [2416] LOG:  starting logical decoding for slot "mtm_slot_2"
+2022-07-22 07:32:34.965 +07 [2416] DETAIL:  Streaming transactions committing after 0/1B0D9E8, reading WAL from 0/1B0D9B0.
+2022-07-22 07:32:34.965 +07 [2416] LOG:  logical decoding found consistent point at 0/1B0D9B0
+2022-07-22 07:32:34.965 +07 [2416] DETAIL:  There are no running transactions.
+2022-07-22 07:32:35.043 +07 [2420] LOG:  [MTM] [mtm-logrep-sender-3-1] walsender to node 1 starts in normal mode
+2022-07-22 07:32:35.043 +07 [2420] LOG:  starting logical decoding for slot "mtm_slot_1"
+2022-07-22 07:32:35.043 +07 [2420] DETAIL:  Streaming transactions committing after 0/1B0D898, reading WAL from 0/1B0D860.
+2022-07-22 07:32:35.043 +07 [2420] LOG:  logical decoding found consistent point at 0/1B0D860
+2022-07-22 07:32:35.043 +07 [2420] DETAIL:  There are no running transactions.
+2022-07-22 07:32:35.259 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint: await for parallel workers to finish
+2022-07-22 07:32:35.298 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint processed: node_id=1, origin_lsn=0/1B0DAF8, receiver_lsn=0/1B0DB18
+2022-07-22 07:32:35.298 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint: await for parallel workers to finish
+2022-07-22 07:32:35.336 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] syncpoint processed: node_id=2, origin_lsn=0/1B0DB28, receiver_lsn=0/1B0DCB0
+2022-07-22 07:32:35.382 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
+2022-07-22 07:32:35.420 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
+2022-07-22 07:32:35.460 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
+2022-07-22 07:32:35.498 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
+2022-07-22 07:32:35.498 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
+2022-07-22 07:32:35.498 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] caughtup from node 1
+2022-07-22 07:32:35.981 +07 [2368] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=2, current_gen_members=11, current_gen_configured=111, donors=11, last_online_in=1, last_vote.num=3, last_vote.members=111
+2022-07-22 07:32:35.981 +07 [2368] LOG:  [MTM] [mtm-campaigner] proposed and voted myself for gen num=3, members=111, configured=111, clique=111
+2022-07-22 07:32:36.130 +07 [2368] LOG:  [MTM] [mtm-campaigner] won election of gen num=3, members=111, configured=111, donors=11
+2022-07-22 07:32:36.306 +07 [2368] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=1, last_vote.num=3, last_vote.members=111
+2022-07-22 07:32:36.306 +07 [2368] LOG:  [MTM] [mtm-campaigner] receive mode set to recovery from node 1
+2022-07-22 07:32:36.306 +07 [2368] LOG:  [MTM] [mtm-campaigner] [STATE] switched to recovery in generation num=3, members=111, donors=11, donor=1
+2022-07-22 07:32:36.654 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=3, last_vote.members=111
+2022-07-22 07:32:36.734 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=3, last_vote.members=111
+2022-07-22 07:32:36.734 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] receive mode set to normal
+2022-07-22 07:32:36.734 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] [STATE] switched to online in generation num=3, members=111, donors=11 by applying ParallelSafe logged at 0/1B0E240
+2022-07-22 07:32:36.750 +07 [2407] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting to reconnect in another mode
+2022-07-22 07:32:36.750 +07 [2406] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
+2022-07-22 07:32:36.752 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
+2022-07-22 07:32:36.755 +07 [2406] LOG:  [MTM] [mtm-logrep-receiver-3-2] load_filter_map from 1B0DCB0 node_id=2 current_last_lsn=1B0E1D0
+2022-07-22 07:32:36.755 +07 [2406] LOG:  [MTM] [mtm-logrep-receiver-3-2] starting receiver: replication_node = 2, mode = normal, remote_start = 1B0DB28, syncpoint_vector (origin/local) = {2: 1B0DB28/1B0DCB0, }
+2022-07-22 07:32:36.792 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
+2022-07-22 07:32:36.792 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
+2022-07-22 07:32:36.797 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] load_filter_map from 1B0DB18 node_id=1 current_last_lsn=1B0E1D0
+2022-07-22 07:32:36.797 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] starting receiver: replication_node = 1, mode = normal, remote_start = 1B0DAF8, syncpoint_vector (origin/local) = {1: 1B0DAF8/1B0DB18, }
+2022-07-22 07:33:15.192 +07 [2457] LOG:  [MTM] [mtm-logrep-receiver-3-1-dynworker-1] bgwpool worker started
+2022-07-22 07:33:15.197 +07 [2457] LOG:  [MTM] [mtm-logrep-receiver-3-1-dynworker-1] executing utility statement RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_13'); SET session_authorization TO 'mtmuser'; SET search_path TO "$user", public;  create table tt_table(id integer primary key)
+2022-07-22 07:33:15.203 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] executing utility statement RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_13'); DROP SCHEMA IF EXISTS mtm_tmp_1_13_toast CASCADE; DROP SCHEMA IF EXISTS mtm_tmp_1_13 CASCADE;
+2022-07-22 07:52:16.027 +07 [2457] LOG:  [MTM] [mtm-logrep-receiver-3-1-dynworker-1] executing utility statement RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_13'); SET session_authorization TO 'mtmuser'; SET search_path TO "$user", public;  CREATE PUBLICATION testpub
+2022-07-22 07:52:16.031 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] executing utility statement RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_13'); DROP SCHEMA IF EXISTS mtm_tmp_1_13_toast CASCADE; DROP SCHEMA IF EXISTS mtm_tmp_1_13 CASCADE;
+2022-07-22 07:52:16.063 +07 [2457] LOG:  [MTM] [mtm-logrep-receiver-3-1-dynworker-1] executing utility statement RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_13'); SET session_authorization TO 'mtmuser'; SET search_path TO "$user", public;  ALTER PUBLICATION testpub ADD TABLE category
+2022-07-22 07:52:16.071 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] executing utility statement RESET session_authorization; select mtm.set_temp_schema('mtm_tmp_1_13'); DROP SCHEMA IF EXISTS mtm_tmp_1_13_toast CASCADE; DROP SCHEMA IF EXISTS mtm_tmp_1_13 CASCADE;
+2022-07-22 07:53:21.110 +07 [2403] LOG:  [DMQ] EOF on connection
+2022-07-22 07:53:21.110 +07 [2403] STATEMENT:  select mtm.dmq_receiver_loop('node1', 2000)
+2022-07-22 07:53:21.110 +07 [2403] LOG:  [MTM] [STATE] dmq receiver from node 1 disconnected
+2022-07-22 07:53:21.110 +07 [2436] FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.110 +07 [2436] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
+2022-07-22 07:53:21.111 +07 [2457] FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.111 +07 [2457] LOG:  [MTM] [mtm-logrep-receiver-3-1-dynworker-1] exiting
+2022-07-22 07:53:21.114 +07 [2368] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=3, current_gen_members=111, current_gen_configured=111, donors=11, last_online_in=3, last_vote.num=4, last_vote.members=011
+2022-07-22 07:53:21.114 +07 [2368] LOG:  [MTM] [mtm-campaigner] proposed and voted myself for gen num=4, members=011, configured=111, clique=011
+2022-07-22 07:53:21.115 +07 [2368] LOG:  [MTM] [mtm-campaigner] won election of gen num=4, members=011, configured=111, donors=011
+2022-07-22 07:53:21.118 +07 [2368] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=4, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=4, last_vote.num=4, last_vote.members=011
+2022-07-22 07:53:21.121 +07 [2368] LOG:  [MTM] [mtm-campaigner] saved state: current_gen_num=4, current_gen_members=011, current_gen_configured=111, donors=011, last_online_in=4, last_vote.num=4, last_vote.members=011
+2022-07-22 07:53:21.121 +07 [2368] LOG:  [MTM] [mtm-campaigner] receive mode set to normal
+2022-07-22 07:53:21.121 +07 [2368] LOG:  [MTM] [mtm-campaigner] [STATE] switched to online in generation num=4, members=011, donors=011 as donor, ParallelSafe logged at 0/1B69648
+2022-07-22 07:53:21.127 +07 [2420] LOG:  [MTM] [mtm-logrep-sender-3-1] walsender to node 1 exited
+2022-07-22 07:53:21.143 +07 [2262] LOG:  background worker "mtm-logrep-receiver-3-1-dynworker-1" (PID 2457) exited with exit code 1
+2022-07-22 07:53:21.144 +07 [2262] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 2436) exited with exit code 1
+2022-07-22 07:53:21.144 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-1 is dead, restarting it
+2022-07-22 07:53:21.187 +07 [3993] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 started.
+2022-07-22 07:53:21.187 +07 [3993] LOG:  [MTM] [mtm-logrep-receiver-3-1] registered as running in normal mode
+2022-07-22 07:53:21.187 +07 [3993] ERROR:  receiver mtm-logrep-receiver-3-1 exits as dmq connection to node 1 is not yet established
+2022-07-22 07:53:21.204 +07 [3993] LOG:  [MTM] [mtm-logrep-receiver-3-1] receiver mtm-logrep-receiver-3-1 is exiting
+2022-07-22 07:53:21.204 +07 [2262] LOG:  background worker "mtm-logrep-receiver-3-1" (PID 3993) exited with exit code 1
+2022-07-22 07:53:21.311 +07 [2406] ERROR:  could not receive data from WAL stream: FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.312 +07 [2402] LOG:  [DMQ] EOF on connection
+2022-07-22 07:53:21.312 +07 [2402] STATEMENT:  select mtm.dmq_receiver_loop('node2', 2000)
+2022-07-22 07:53:21.312 +07 [2402] LOG:  [MTM] [STATE] dmq receiver from node 2 disconnected
+2022-07-22 07:53:21.328 +07 [2416] LOG:  [MTM] [mtm-logrep-sender-3-2] walsender to node 2 exited
+2022-07-22 07:53:21.328 +07 [2406] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
+2022-07-22 07:53:21.328 +07 [2262] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 2406) exited with exit code 1
+2022-07-22 07:53:21.328 +07 [2349] LOG:  [MTM] [mtm-monitor] mtm-logrep-receiver-3-2 is dead, restarting it
+2022-07-22 07:53:21.369 +07 [3997] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 started.
+2022-07-22 07:53:21.369 +07 [3997] LOG:  [MTM] [mtm-logrep-receiver-3-2] registered as running in normal mode
+2022-07-22 07:53:21.369 +07 [3997] ERROR:  receiver mtm-logrep-receiver-3-2 exits as dmq connection to node 2 is not yet established
+2022-07-22 07:53:21.386 +07 [3997] LOG:  [MTM] [mtm-logrep-receiver-3-2] receiver mtm-logrep-receiver-3-2 is exiting
+2022-07-22 07:53:21.386 +07 [2262] LOG:  background worker "mtm-logrep-receiver-3-2" (PID 3997) exited with exit code 1
+2022-07-22 07:53:21.416 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [DMQ] failed to send message to node1: server closed the connection unexpectedly
+		This probably means the server terminated abnormally
+		before or while processing the request.
+	
+2022-07-22 07:53:21.416 +07 [2271] LOG:  [MTM] [mtm-dmq-sender] [STATE] dmq sender to node 1 disconnected
+2022-07-22 07:53:21.510 +07 [2262] LOG:  received fast shutdown request
+2022-07-22 07:53:21.511 +07 [2262] LOG:  aborting any active transactions
+2022-07-22 07:53:21.511 +07 [2349] FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.511 +07 [2368] FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.511 +07 [2369] FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.511 +07 [2271] FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.511 +07 [2367] FATAL:  terminating connection due to administrator command
+2022-07-22 07:53:21.511 +07 [2349] LOG:  [MTM] [mtm-monitor] monitor exiting
+2022-07-22 07:53:21.511 +07 [2367] LOG:  [MTM] [mtm-replier] replier exiting
+2022-07-22 07:53:21.512 +07 [2262] LOG:  background worker "logical replication launcher" (PID 2272) exited with exit code 1
+2022-07-22 07:53:21.512 +07 [2262] LOG:  background worker "mtm-dmq-sender" (PID 2271) exited with exit code 1
+2022-07-22 07:53:21.512 +07 [2262] LOG:  background worker "mtm-campaigner" (PID 2368) exited with exit code 1
+2022-07-22 07:53:21.512 +07 [2262] LOG:  background worker "mtm-replier" (PID 2367) exited with exit code 1
+2022-07-22 07:53:21.512 +07 [2262] LOG:  background worker "mtm-resolver" (PID 2369) exited with exit code 1
+2022-07-22 07:53:21.513 +07 [2262] LOG:  background worker "mtm-monitor" (PID 2349) exited with exit code 1
+2022-07-22 07:53:21.513 +07 [2265] LOG:  shutting down
+2022-07-22 07:53:21.528 +07 [2262] LOG:  database system is shut down
